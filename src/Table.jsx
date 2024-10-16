@@ -16,7 +16,7 @@ function Table() {
                 setData(response.data); // Set data
                 setTotalCount(response.data.length); // Use length for total count
             } catch (error) {
-                console.error(error);
+                alert(error);
             }
         };
 
