@@ -6,6 +6,8 @@ function Table() {
     const [slicedData, setSlicedData] = useState([]);
     const [totalCount, setTotalCount] = useState(0);
     const [index, setIndex] = useState(0);
+    const [page, setPage] = useState(1);
+
 
     useEffect(() => {
         const fetchData = async () => {
@@ -49,13 +51,20 @@ function Table() {
                 </tbody>
             </table>
             <button 
-                onClick={() => setIndex((prev) => Math.max(prev - 10, 0))}
+                onClick={() =>{ setIndex((prev) => Math.max(prev - 10, 0))
+                    setPage((prev)=>prev-1);
+                }}
                 disabled={index === 0}
             >
                 Previous
             </button>
+            <button>
+                {page}
+            </button>
             <button 
-                onClick={() => setIndex((prev) => Math.min(prev + 10, totalCount - 10))}
+                onClick={() => {setIndex((prev) => Math.min(prev + 10, totalCount - 10));
+                    setPage((prev)=>prev+1);
+                }}
                 disabled={index + 10 >= totalCount}
             >
                 Next
